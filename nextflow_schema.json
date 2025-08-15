@@ -1,12 +1,12 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
-    "title": "epi2me-labs/wf-template",
-    "workflow_title": "Template workflow",
-    "description": "Nextflow workflow template repository.",
-    "demo_url": "https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-template/wf-template-demo.tar.gz",
+    "title": "jiaxunk/wf-nanoplot",
+    "workflow_title": "wf-nanoplot",
+    "description": "Basic NanoPlot analysis for Nanopore data.",
+    "demo_url": "",
     "aws_demo_url": "https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-template/wf-template-demo/aws.nextflow.config",
-    "url": "https://github.com/epi2me-labs/wf-template",
+    "url": "https://github.com/jiaxunk/wf-nanoplot",
     "type": "object",
     "definitions": {
         "input": {
@@ -93,6 +93,24 @@
                 }
             }
         },
+        "nanoplot": {
+            "title": "NanoPlot Options",
+            "type": "object",
+            "fa_icon": "fas fa-chart-bar",
+            "description": "Parameters for the NanoPlot analysis step.",
+            "properties": {
+                "nanoplot_version": {
+                    "type": "string",
+                    "default": "latest",
+                    "description": "Version of NanoPlot to use. Default is 'latest'."
+                },
+                "nanoplot_options": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Additional command line options for NanoPlot."
+                }
+            }
+        },
         "output": {
             "title": "Output Options",
             "type": "object",
@@ -123,7 +141,7 @@
             "properties": {
                 "disable_ping": {
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "Enable to prevent sending a workflow ping.",
                     "overrides": {
                         "epi2mecloud": {
@@ -154,6 +172,9 @@
         },
         {
             "$ref": "#/definitions/samples"
+        },
+        {
+            "$ref": "#/definitions/nanoplot"
         },
         {
             "$ref": "#/definitions/output"

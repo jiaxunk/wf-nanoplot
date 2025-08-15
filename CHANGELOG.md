@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.1 – 2025-08-15
+### Changed
+- Renamed project from *wf‑template* to **wf‑nanoplot**.
+- Added NanoPlot analysis step.
+- Updated documentation and config files.
+
 ## [v5.6.2]
 ### Added
 - IGV configuration now allows per-track customisation options such as display mode, show alignments and color by.

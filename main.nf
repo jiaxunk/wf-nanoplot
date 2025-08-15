@@ -18,7 +18,7 @@ include {
     getParams;
 } from './lib/common'
 
-include { NANOPLOT } from './modules/local/nanoplot.nf'
+include { runNanoplot } from './modules/local/nanoplot.nf'
 
 OPTIONAL_FILE = file("$projectDir/data/OPTIONAL_FILE")
 
@@ -36,7 +36,6 @@ process getVersions {
     fastcat --version | sed 's/^/fastcat,/' >> versions.txt
     """
 }
-
 
 process makeReport {
     label "wf_common"
@@ -159,7 +158,7 @@ workflow pipeline {
         // Run NanoPlot analysis on ingress results
         nanoplot_input = reads
             .map { meta, path, _index, _stats -> [meta, path] }
-        nanoplot_results = NANOPLOT(nanoplot_input)
+        nanoplot_results = runNanoplot(nanoplot_input)
 
         report = makeReport(
             for_report,

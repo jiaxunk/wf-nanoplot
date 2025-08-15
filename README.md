@@ -1,19 +1,9 @@
-# Template workflow
+# Nanoplot analysis
 
-Nextflow workflow template repository.
+The is a simple workflow that include NanoPlot analysis for quick overview of nanopore sequencing data.
 
-
-
-## Introduction
-
-<!---This section of documentation typically contains a list of things the workflow can perform also any other intro.--->
-
-This workflow is not intended to be used by end users.
-
-This workflow can be used for the following:
-
-+ As a template using gitlabs create project from template.
-+ For testing of any scripts that are the same across workflows such as scripts in the lib directory.
+For more details in regards to NanoPlot, refer:
+https://github.com/wdecoster/NanoPlot
 
 
 
@@ -48,15 +38,9 @@ compute and software resources,
 therefore Nextflow will need to be
 installed before attempting to run the workflow.
 
-The workflow can currently be run using either
+The workflow can currently be run using 
 [Docker](https://docs.docker.com/get-started/)
-or [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/index.html)
 to provide isolation of the required software.
-Both methods are automated out-of-the-box provided
-either Docker or Singularity is installed.
-This is controlled by the
-[`-profile`](https://www.nextflow.io/docs/latest/config.html#config-profiles)
-parameter as exemplified below.
 
 It is not required to clone or download the git repository
 in order to run the workflow.
@@ -69,30 +53,26 @@ Nextflow and provide a list of all parameters
 available for the workflow as well as an example command:
 
 ```
-nextflow run epi2me-labs/wf-template --help
+nextflow run jiaxunk/wf-nanoplot --help
 ```
 To update a workflow to the latest version on the command line use
 the following command:
 ```
-nextflow pull epi2me-labs/wf-template
+nextflow pull jiaxunk/wf-nanoplot
 ```
 
 A demo dataset is provided for testing of the workflow.
 It can be downloaded and unpacked using the following commands:
 ```
-wget https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-template/wf-template-demo.tar.gz
-tar -xzvf wf-template-demo.tar.gz
+wget https://github.com/jiaxunk/wf-nanoplot/tree/main/test_data/fastq_ingress/demo.tar.gz?raw=true -O demo.tar.gz
+tar -xzvf demo.tar.gz
 ```
 The workflow can then be run with the downloaded demo data using:
 ```
-nextflow run epi2me-labs/wf-template \
-	--fastq 'wf-template-demo/test_data/reads.fastq.gz' \
+nextflow run jiaxunk/wf-nanoplot \
+	--fastq demo \
 	-profile standard
 ```
-
-For further information about running a workflow on
-the command line see https://labs.epi2me.io/wfquickstart/
-
 
 
 
@@ -272,6 +252,9 @@ Output files may be aggregated including information for all samples or provided
 The [fastcat/bamstats](https://github.com/epi2me-labs/fastcat) tool is used to concatenate multifile samples to be processed by the workflow. It will also output per read stats including average read lengths and qualities.
 
 
+### 2. Perform NanoPlot analysis
+
+The [NanoPlot](https://github.com/wdecoster/NanoPlot) tool is used to give an overview of the input data, including read length and basecall quality distribution and corresponding plots.
 
 ## Troubleshooting
 

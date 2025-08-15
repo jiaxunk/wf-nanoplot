@@ -7,3 +7,4 @@ template-workflow
 *.pyo
 .DS_store
 .git*
+README.ori

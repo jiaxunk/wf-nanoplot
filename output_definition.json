@@ -1,7 +1,7 @@
 {
   "files": {
     "workflow-report": {
-      "filepath": "./wf-template-report.html",
+      "filepath": "./wf-nanoplot-report.html",
       "title": "workflow report",
       "description": "Report for all samples",
       "mime-type": "text/html",
@@ -45,6 +45,22 @@
       "title": "Concatenated sequence data",
       "description": "Per sample reads concatenated in to one fastq file.",
       "mime-type": "text/json",
+      "optional": false,
+      "type": "per-sample"
+    },
+    "sample-nanoplot-html": {
+      "filepath": "./wf-nanoplot/nanoplot/{{ alias }}.NanoPlot.html",
+      "title": "Nanoplot report",
+      "description": "Nanoplot report for each sample.",
+      "mime-type": "text/html",
+      "optional": false,
+      "type": "per-sample"
+    },
+    "sample-nanoplot-stats": {
+      "filepath": "./wf-nanoplot/nanoplot/{{ alias }}.NanoStats.txt",
+      "title": "Nanoplot stats",
+      "description": "Nanoplot stats for each sample.",
+      "mime-type": "text/plain",
       "optional": false,
       "type": "per-sample"
     }
